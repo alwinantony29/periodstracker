@@ -55,7 +55,7 @@ interface OnboardingModalProps {
 }
 
 export const OnboardingModal = ({ onComplete }: OnboardingModalProps) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -138,7 +138,7 @@ export const OnboardingModal = ({ onComplete }: OnboardingModalProps) => {
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
 
-        <FlatList
+        {/* <FlatList
           data={ONBOARDING_STEPS}
           renderItem={renderStep}
           horizontal
@@ -151,7 +151,11 @@ export const OnboardingModal = ({ onComplete }: OnboardingModalProps) => {
             setCurrentIndex(index);
           }}
           keyExtractor={(item) => item.id}
-        />
+        /> */}
+        {renderStep({
+          item: ONBOARDING_STEPS[currentIndex],
+          index: currentIndex,
+        })}
 
         {renderDots()}
 
